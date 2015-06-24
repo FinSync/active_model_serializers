@@ -162,7 +162,7 @@ end
     end
 
     def associations
-      associations = self.class._associations
+      associations = @object.nil? ? {} : self.class._associations
       included_associations = filter(associations.keys)
       associations.each_with_object({}) do |(name, association), hash|
         if included_associations.include? name
